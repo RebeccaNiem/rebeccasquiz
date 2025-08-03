@@ -61,6 +61,7 @@ function App() {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
+  const [showResult, setShowResult] = useState(false);
 
   const question = questions[currentQuestion];
 
@@ -70,13 +71,18 @@ function App() {
     if (selectedOption === correctAnswer) {
       setScore(score + 1);
     }
+
+    const nextQuestion = currentQuestion + 1;
+    if (nextQuestion < questions.length) {
+      setCurrentQuestion(nextQuestion);
+    } else setShowResult(true);
   }
 
   return (
     <div className="quiz-container">
       <h1>Coding quiz</h1>
       <h3>
-        Question: {currentQuestion + 1} of {questions.lenght}
+        Question: {currentQuestion + 1} of {questions.length}
       </h3>
       <p>{question.question}</p>
 
