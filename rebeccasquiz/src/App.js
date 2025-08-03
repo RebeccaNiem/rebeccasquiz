@@ -61,7 +61,6 @@ function App() {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
-  const [showresult, setShowResult] = useState(0);
 
   const question = questions[currentQuestion];
 
@@ -77,7 +76,7 @@ function App() {
     <div className="quiz-container">
       <h1>Coding quiz</h1>
       <h3>
-        Question: {currentQuestion + 1} of {questions.legnth}
+        Question: {currentQuestion + 1} of {questions.lenght}
       </h3>
       <p>{question.question}</p>
 
@@ -85,7 +84,13 @@ function App() {
         {question.options.map(function (option) {
           return (
             <li key={option}>
-              <button>{option}</button>
+              <button
+                onClick={function () {
+                  handleAnswer(option);
+                }}
+              >
+                {option}{" "}
+              </button>
             </li>
           );
         })}
