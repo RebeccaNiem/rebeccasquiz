@@ -78,6 +78,24 @@ function App() {
     } else setShowResult(true);
   }
 
+  function restartQuiz() {
+    setCurrentQuestion(0);
+    setScore(0);
+    setShowResult(false);
+  }
+
+  if (showResult) {
+    return (
+      <div className="quiz-container">
+        <h1>Quiz score</h1>
+        <p>
+          you got {score} from {questions.length} correct answers!
+        </p>
+        <button onClick={restartQuiz}>restart the quiz</button>
+      </div>
+    );
+  }
+
   return (
     <div className="quiz-container">
       <h1>Coding quiz</h1>
