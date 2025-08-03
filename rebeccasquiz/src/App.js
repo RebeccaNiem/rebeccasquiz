@@ -60,7 +60,18 @@ function App() {
   ];
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [score, setScore] = useState(0);
+  const [showresult, setShowResult] = useState(0);
+
   const question = questions[currentQuestion];
+
+  function handleAnswer(selectedOption) {
+    const correctAnswer = questions[currentQuestion].correctAnswer;
+
+    if (selectedOption === correctAnswer) {
+      setScore(score + 1);
+    }
+  }
 
   return (
     <div className="quiz-container">
@@ -68,6 +79,17 @@ function App() {
       <h3>
         Question: {currentQuestion + 1} of {questions.legnth}
       </h3>
+      <p>{question.question}</p>
+
+      <ul>
+        {question.options.map(function (option) {
+          return (
+            <li key={option}>
+              <button>{option}</button>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
