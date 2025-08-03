@@ -91,6 +91,7 @@ function App() {
         <p>
           you got {score} from {questions.length} correct answers!
         </p>
+        <p>{score > 3 ? "😊, great job!" : "😞, try it again!"}</p>
         <button onClick={restartQuiz}>restart the quiz</button>
       </div>
     );
